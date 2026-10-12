@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sophia Gail N. Manlagnit | Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --black: #000000;
+            --dark: #121212;
+            --dimgrey: #1c1c1c;
+            --grey: #2a2a2a;
+            --silver: #444444;
+            --lightgrey: #888888;
+            --silverlight: #c0c0c0;
+            --white: #ffffff;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--silverlight);
+            line-height: 1.7;
+        }
+
+        /* ===== Navigation ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: var(--silverlight);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--white);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--white);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem;
+            background: radial-gradient(circle at top, var(--grey) 0%, var(--black) 70%);
+        }
+
+        .profile-wrap {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .profile-ring {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            width: 216px;
+            height: 216px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--silver), var(--lightgrey), var(--silver));
+            animation: rotate 6s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-img {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid var(--dark);
+            background: var(--grey);
+            overflow: hidden;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            letter-spacing: 3px;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            color: var(--lightgrey);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            max-width: 550px;
+            color: var(--silverlight);
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 0.9rem 2.2rem;
+            border: 1px solid var(--silverlight);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+        }
+
+        .btn.fill {
+            background: var(--silverlight);
+            color: var(--black);
+        }
+
+        .btn.fill:hover {
+            background: var(--white);
+        }
+
+        /* ===== Sections ===== */
+        section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            border-bottom: 1px solid var(--grey);
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        section h2 span {
+            display: inline-block;
+            width: 50px;
+            height: 3px;
+            background: var(--silver);
+        }
+
+        /* ===== About ===== */
+        .about-text {
+            font-size: 1.05rem;
+            color: var(--silverlight);
+        }
+
+        .about-text p {
+            margin-bottom: 1.2rem;
+        }
+
+        /* ===== Cards Grid ===== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--dimgrey);
+            border: 1px solid var(--grey);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--silver);
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card p {
+            color: var(--lightgrey);
+            font-size: 0.95rem;
+        }
+
+        /* ===== Skills ===== */
+        .skills-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill {
+            padding: 0.8rem 1.5rem;
+            background: var(--grey);
+            border: 1px solid var(--silver);
+            color: var(--silverlight);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill:hover {
+            background: var(--silver);
+            color: var(--white);
+        }
+
+        /* ===== List ===== */
+        .goal-list {
+            list-style: none;
+        }
+
+        .goal-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--grey);
+            color: var(--silverlight);
+        }
+
+        .goal-list li::before {
+            content: '▸';
+            color: var(--lightgrey);
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        /* ===== Contact ===== */
+        .contact-info p {
+            padding: 0.8rem 0;
+            color: var(--silverlight);
+        }
+
+        .contact-info strong {
+            color: var(--white);
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--lightgrey);
+            font-size: 0.9rem;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 600px) {
+            nav ul {
+                gap: 1rem;
+            }
+            nav a {
+                font-size: 0.8rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#hobbies">Hobbies</a></li>
+            <li><a href="#goals">Goals</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="profile-wrap">
+            <div class="profile-ring"></div>
+            <div class="profile-img">
+                <img src="profile.jpg" alt="Sophia Gail N. Manlagnit">
+            </div>
+        </div>
+        <h1>SOPHIA GAIL N. MANLAGNIT</h1>
+        <p class="sub">BS Computer Science Student | Aspiring Developer</p>
+        <p>Welcome to my personal portfolio — a space where I document my learning journey, showcase my skills, and share my passion for technology.</p>
+        <div class="btn-group">
+            <a href="#about" class="btn fill">About Me</a>
+            <a href="#contact" class="btn">Connect</a>
+        </div>
+    </section>
+
+    <!-- About Me -->
+    <section id="about">
+        <h2><span></span> About Me</h2>
+        <div class="about-text">
+            <p>Hi! I'm Sophia Gail N. Manlagnit, a Bachelor of Science in Computer Science student at Catanduanes State University. I am currently developing my skills in programming, web development, and problem-solving.</p>
+            <p>As a student, I enjoy learning new technologies and challenging myself through different programming tasks. I believe that with dedication and continuous learning, I can turn my passion for technology into a meaningful career.</p>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+        <h2><span></span> Education</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3>Catanduanes State University</h3>
+                <p><strong>Bachelor of Science in Computer Science</strong></p>
+                <p>Currently pursuing my degree — building a strong foundation in programming, logic, and software development.</p>
+            </div>
+            <div class="card">
+                <h3>High School</h3>
+                <p>Completed my basic education with a focus on science and mathematics — subjects that sparked my interest in technology and computing.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <h2><span></span> Skills</h2>
+        <p style="margin-bottom: 1.5rem; color: var(--lightgrey);">Programming languages and tools I am currently working with:</p>
+        <div class="skills-wrap">
+            <span class="skill">C</span>
+            <span class="skill">C++</span>
+            <span class="skill">Java</span>
+            <span class="skill">HTML</span>
+            <span class="skill">CSS</span>
+            <span class="skill">Problem Solving</span>
+            <span class="skill">Web Development Basics</span>
+        </div>
+    </section>
+
+    <!-- Hobbies & Interests -->
+    <section id="hobbies">
+        <h2><span></span> Hobbies & Interests</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3>Exploring Technology</h3>
+                <p>I enjoy discovering how computers and digital systems work behind the scenes.</p>
+            </div>
+            <div class="card">
+                <h3>Challenging Myself</h3>
+                <p>I love solving problems and taking on tasks that push me to learn something new.</p>
+            </div>
+            <div class="card">
+                <h3>Creative Projects</h3>
+                <p>Building websites, simple programs, and anything that lets me turn ideas into reality.</p>
+            </div>
+            <div class="card">
+                <h3>Continuous Learning</h3>
+                <p>Reading, researching, and keeping up with what's new in the world of technology.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Goals -->
+    <section id="goals">
+        <h2><span></span> My Goals</h2>
+        <ul class="goal-list">
+            <li>Complete my degree — Bachelor of Science in Computer Science</li>
+            <li>Build strong skills in software development and programming</li>
+            <li>Secure a stable career in the technology industry</li>
+            <li>Grow as a professional Software Developer</li>
+            <li>Keep learning and improving every day</li>
+            <li>Create projects that can help others and make a positive impact</li>
+        </ul>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2><span></span> Connect</h2>
+        <div class="contact-info">
+            <p><strong>University:</strong> Catanduanes State University</p>
+            <p><strong>GitHub:</strong> github.com/yourusername</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Sophia Gail N. Manlagnit. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
